@@ -76,18 +76,12 @@
     const minHand = document.querySelector('.min-hand');
     const hourHand = document.querySelector('.hour-hand');
 
-    /*hourHand.style.backgroundColor = 'red';
-    minHand.style.backgroundColor = 'yellow';
-    secondHand.style.backgroundColor = 'green';*/
-
     function setDate() {
       const now = new Date();
 
       const seconds = now.getSeconds();
       const minutes = now.getMinutes();
       const hours = now.getHours();
-
-      console.log(hours, minutes, seconds)
 
       const secondsDegrees = ((seconds / 60) * 360) + 90;
       const minsDegrees = ((minutes / 60) * 360) + 90;
