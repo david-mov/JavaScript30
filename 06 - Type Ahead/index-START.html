@@ -26,14 +26,16 @@
   const suggestions = document.querySelector('.suggestions');
 
   function handleInput() {
+    const exp = new RegExp(this.value, 'gi');
     const filteredCities = cities.filter(e => {
-      const exp = new RegExp(this.value, 'gi');
       return e.city.match(exp) || e.state.match(exp);
     })
     suggestions.innerHTML = filteredCities.map(e => {
+      const city = e.city.replace(exp, `<span class='hl'>${this.value}</span>`);
+      const state = e.state.replace(exp, `<span class='hl'>${this.value}</span>`)
       return (
         `<li>
-          <span class='name'>${e.city}, ${e.state}</span>
+          <span class='name'>${city}, ${state}</span>
           <span class='population'>${e.population}</span>
         </li>`
       );
