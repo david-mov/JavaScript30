@@ -27,6 +27,7 @@
 
   function handleInput() {
     const exp = new RegExp(this.value, 'gi');
+    const internationalNumberFormat = new Intl.NumberFormat('en-US');
     const filteredCities = cities.filter(e => {
       return e.city.match(exp) || e.state.match(exp);
     })
@@ -36,7 +37,7 @@
       return (
         `<li>
           <span class='name'>${city}, ${state}</span>
-          <span class='population'>${e.population}</span>
+          <span class='population'>${internationalNumberFormat.format(e.population)}</span>
         </li>`
       );
     }).join('');
